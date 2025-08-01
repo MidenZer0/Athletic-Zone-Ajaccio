@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  scroll-behavior: smooth;
+
+  /* Colors */
+
+  --background: #f5f5f5;
+
+  /* Text Colors */
+
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+  --color-highlight: #ff4040;
+
+  /* only used for the navigation hover effect */
+  --color-tertiary: #dcdcda;
+
+  --background-burger: #ede9e9;
+
+  /* Font Sizes */
+
+  --size-forty: 40px;
+}
+
+body {
+  background: var(--background);
+  color: var(--color-primary);
+  font-family: var(--font-roboto-sans);
+  overflow-x: hidden;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-background-burger: var(--background-burger);
+
+  /* font styles */
+  --font-sans: var(--font-roboto-sans);
+  --font-mono: var(--font-roboto-mono);
+  --font-sofia: var(--font-sofia-sans-extra-condensed);
+
+  /* font sizes */
+  --size-forty: var(--size-forty);
+
+  /* Text colors */
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-highlight: var(--color-highlight);
+  --color-tertiary: var(--color-tertiary);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --color-primary: #ffffff;
+    --color-secondary: #000000;
+    --color-highlight: #ff4040;
+  }
+} */
+
+/* Navigation link classes */
+
+.nav-img-preview {
+  @apply absolute right-[-110px] top-1/2 transform -translate-y-1/2 w-[100px] h-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in;
+}
