@@ -69,7 +69,7 @@ export default function BurgerMenu({ className = "" }: BurgerMenuProps) {
     <div className={getContainerClasses()}>
       <nav className="h-full w-full flex justify-evenly items-center bg-background-burger">
         <a href="#accueil" className=" flex justify-center items-center">
-          <img src="/image/Logo.svg" alt="Logo" className="w-auto h-8" />
+          <img src="/image/logo_black.svg" alt="Logo" className="w-auto h-8" />
         </a>
         <NavLinks
           className="h-full flex items-center gap-1 text-primary text-3xl font-sofia "
