@@ -9,7 +9,7 @@ export default function HeroPage() {
       className="
       w-full 
       h-screen 
-      bg-[url('/image/herobackground.png')] 
+      bg-[url('/image/hero_background.webp')] 
       bg-cover 
       bg-center 
       text-secondary 

@@ -11,13 +11,13 @@ export const navigationLinks: NavigationLink[] = [
   {
     name: "A propos",
     href: "#about",
-    image: "/image/About_preview_1.png",
+    image: "/image/about_preview_1.webp",
     alt: "A propos image preview",
   },
   {
     name: "Méthode",
     href: "#method",
-    image: "/image/méthode_preview.png",
+    image: "/image/méthode_preview.webp",
     alt: "méthode image preview",
   },
   {
@@ -29,7 +29,7 @@ export const navigationLinks: NavigationLink[] = [
   {
     name: "Galerie",
     href: "#galerie",
-    image: "/image/Galery_preview_1.png",
+    image: "/image/galery_preview_1.webp",
     alt: "Galerie image preview",
   },
   {
