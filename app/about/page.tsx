@@ -1,17 +1,12 @@
-import BurgerMenu from "@/app/components/ui/BurgerMenu";
+import HeroNavigationV2 from '@/app/components/ui/HeroNavigationV2';
 
 export default function AboutPage() {
   return (
     <main
       id="about"
-      className="h-screen bg-gray-900 text-secondary flex items-center justify-center"
+      className="flex h-screen items-center justify-center bg-gray-900 text-secondary"
     >
-      <div className="flex flex-col text-center">
-        <h1 className="text-4xl font-sofia mb-4">À propos</h1>
-        <p className="text-tertiary">
-          Section À propos en cours de développement
-        </p>
-      </div>
+      <p>About</p>
     </main>
   );
 }

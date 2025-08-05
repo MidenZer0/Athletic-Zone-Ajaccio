@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { SectionId } from "@/app/lib/navigation";
-import NavLinks from "./NavLinks";
+import { useState } from 'react';
+import { SectionId } from '@/app/lib/navigation';
+import NavLinks from './NavLinks';
 
 interface MobileMenuProps {
   className?: string;
@@ -25,20 +25,20 @@ export default function MobileMenu({ activeSection }: MobileMenuProps) {
         aria-label="Toggle navigation menu"
         aria-expanded={showMobileMenu}
         aria-controls="mobile-menu"
-        className="fixed bottom-6 right-6 w-12 h-12 bg-background rounded-full shadow-lg z-50 flex items-center justify-center lg:hidden"
+        className="fixed right-6 bottom-6 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-background shadow-lg lg:hidden"
       >
-        <img src="/image/logo_black.svg" alt="Menu" className="w-8 h-8" />
+        <img src="/image/logo_black.svg" alt="Menu" className="h-8 w-8" />
       </button>
 
       {/* Slide-up menu from bottom */}
       {showMobileMenu && (
-        <div className="fixed bottom-0 left-0 w-full h-dvh bg-background z-40 lg:hidden text-5xl space-y-2">
+        <div className="fixed bottom-0 left-0 z-40 h-dvh w-full space-y-2 bg-background text-5xl lg:hidden">
           {/* Vertical navigation list */}
-          <nav className="flex flex-col h-full items-center justify-end bg-amber-400">
+          <nav className="flex h-full flex-col items-center justify-end bg-amber-400">
             <NavLinks
               activeSection={activeSection}
               variant="mobile"
-              className="h-full flex flex-col items-center justify-center font-sofia bg-red-400"
+              className="flex h-full flex-col items-center justify-center bg-red-400 font-sofia"
             />
           </nav>
         </div>

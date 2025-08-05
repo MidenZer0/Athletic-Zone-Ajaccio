@@ -1,7 +1,7 @@
 // Utility functions for the Athletic Zone Ajaccio project
 
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 // Utility to merge Tailwind CSS classes properly
 export function cn(...inputs: ClassValue[]) {
