@@ -1,15 +1,15 @@
-import NavLinks from "./NavLinks";
+import NavLinks from './NavLinks';
 
 interface HeroNavigationProps {
   className?: string;
 }
 
 export default function HeroNavigation({
-  className = "",
+  className = '',
 }: HeroNavigationProps) {
   return (
     <nav
-      className={`hidden lg:flex flex-1 justify-end items-center pl-5 text-5xl text-tertiary ${className}`}
+      className={`hidden flex-1 items-center justify-end pl-5 text-5xl text-tertiary lg:flex ${className}`}
     >
       <NavLinks variant="hero" />
     </nav>

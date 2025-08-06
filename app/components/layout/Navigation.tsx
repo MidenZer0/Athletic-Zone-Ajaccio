@@ -3,9 +3,5 @@
 
 export default function Navigation() {
   // We'll build this together step by step!
-  return (
-    <div>
-      {/* Navigation content will go here */}
-    </div>
-  );
+  return <div>{/* Navigation content will go here */}</div>;
 }
