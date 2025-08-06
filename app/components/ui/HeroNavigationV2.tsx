@@ -9,12 +9,12 @@ export default function HeroNavigationV2({
 }: HeroNavigationV2Props) {
   return (
     <nav
-      className={`hidden flex-1 items-center justify-end pl-5 font-sofia text-5xl text-tertiary lg:flex ${className}`}
+      className={`hidden flex-1 items-center justify-end font-sofia text-5xl text-tertiary lg:flex ${className}`}
     >
       <NavigationLinksV2
         showImages={true}
-        className="flex w-fit flex-col pr-[140px] text-right"
-        linkClassName="hover:text-secondary hover:scale-105 transition-all duration-300 group"
+        className="flex w-fit flex-col pr-[120px] text-right"
+        linkClassName=" hover:scale-105 transition-all duration-300 group"
         iconClassName="relative h-fit top-[14px]"
       />
     </nav>

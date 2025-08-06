@@ -31,7 +31,7 @@ export default function NavLinks({
             className={`${
               link.isSpecial
                 ? 'flex gap-1 text-highlight hover:text-highlight'
-                : ''
+                : 'hover:text-secondary'
             } ${linkClassName}`}
             aria-label={`Navigate to ${link.name} section`}
           >

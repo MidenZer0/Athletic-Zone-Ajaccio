@@ -1,6 +1,6 @@
 import HeroBorder from '@/app/components/ui/HeroBorder';
 import HeroTitle from '@/app/components/ui/HeroTitle';
-import HeroNavigationV2 from '@/app/components/ui/HeroNavigation';
+import HeroNavigationV2 from '@/app/components/ui/HeroNavigationV2';
 
 export default function HeroPage() {
   return (
