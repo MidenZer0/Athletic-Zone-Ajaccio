@@ -59,7 +59,7 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
     return cn(
       // Layout
       'w-dvw h-[15dvh] fixed top-0 z-50',
-      'flex flex-col items-center',
+      'flex flex-col items-center max-lg:hidden',
 
       // Style
       'drop-shadow-md drop-shadow-gray-600',
@@ -99,6 +99,9 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
         <a
           href={link.href}
           className={cn(
+            // Layout
+            'flex h-full w-full items-center pl-2',
+
             // Animation
             'transition-all duration-300',
 
@@ -152,7 +155,7 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
         <img
           src="/image/burger_button.svg"
           alt="burger button"
-          className={cn('h-10 w-50')}
+          className={cn('h-10 w-50 cursor-pointer')}
         />
       </button>
     </div>

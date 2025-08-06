@@ -53,6 +53,7 @@ export default function RootLayout({
       <body
         className={`${robotoSans.variable} ${robotoMono.variable} ${sofiaSansExtraCondensed.variable} ${anton.variable} antialiased`}
       >
+        <BurgerMenuV2 />
         <MobileMenu />
 
         {children}

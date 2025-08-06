@@ -1,6 +1,6 @@
 import HeroBorder from '@/app/components/ui/HeroBorder';
 import HeroTitle from '@/app/components/ui/HeroTitle';
-import HeroNavigation from '@/app/components/ui/HeroNavigation';
+import HeroNavigationV2 from '@/app/components/ui/HeroNavigation';
 
 export default function HeroPage() {
   return (
@@ -26,7 +26,7 @@ export default function HeroPage() {
 
         {/* right column */}
         <div className="flex flex-col justify-between">
-          <HeroNavigation />
+          <HeroNavigationV2 />
           <div className="text-(length:--size-forty)/[100%]">
             <div className="flex items-center justify-end gap-2">
               <img src="/image/Logo.svg" alt="Logo" className="h-6 w-auto" />
