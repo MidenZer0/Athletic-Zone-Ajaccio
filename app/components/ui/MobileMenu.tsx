@@ -9,7 +9,6 @@ import {
   navigationLinks,
   NavigationLink,
 } from '@/app/lib/navigation';
-import NavLinks from './NavLinks';
 import NavigationLinksV2 from './NavigationLinksV2';
 
 // Utility function for combining classes
@@ -118,7 +117,16 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
         aria-label="Toggle navigation menu"
         aria-expanded={showMobileMenu}
         aria-controls="mobile-menu"
-        className="fixed right-6 bottom-6 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-background shadow-lg min-lg:hidden"
+        className={cn(
+          // Position & Size
+          'fixed right-6 bottom-6 z-50 h-12 w-12',
+          // Layout
+          'flex items-center justify-center',
+          // Style
+          'cursor-pointer rounded-full bg-background shadow-lg',
+          // Responsive
+          'min-lg:hidden'
+        )}
       >
         <img src="/image/logo_black.svg" alt="Menu" className="h-8 w-8" />
       </button>
@@ -127,8 +135,7 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
       <div
         className={cn(
           // Position & Size
-          'fixed bottom-0 left-0 z-40',
-          'h-dvh w-full',
+          'fixed bottom-0 left-0 z-40 h-dvh w-full',
 
           // Layout
           'flex flex-col items-center justify-evenly',
@@ -151,24 +158,31 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
         {/* Logo section - fixed at top */}
         <div
           className={cn(
+            // Position & Size
+            'h-2/5 w-full',
             // Layout
-            'flex h-2/5 w-full flex-col items-center justify-center bg-[url("/image/logo_woodV3.webp")] bg-cover bg-center'
+            'flex items-center justify-center',
+            // Style
+            'bg-[url("/image/logo_woodV3.webp")] bg-cover bg-center'
           )}
-        >
-          {/* <img src="/image/logo_wood.webp" alt="logo" className={cn('')} /> */}
-        </div>
+        />
 
         {/* Navigation section - takes remaining space */}
         <nav
           className={cn(
+            // Position & Size
+            'h-3/5 w-full pt-5 pb-5',
             // Layout
-            'flex h-3/5 w-full flex-col justify-center pt-5 pb-5'
+            'flex flex-col justify-center'
           )}
         >
           <NavigationLinksV2
             className={cn(
+              // Position & Size
+              'h-full w-full',
+
               // Layout
-              'flex h-full w-full flex-col text-4xl',
+              'flex flex-col text-4xl',
 
               // Spacing
               'gap-2',
