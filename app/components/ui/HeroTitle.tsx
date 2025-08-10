@@ -1,12 +1,27 @@
+import { clsx, ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+
 interface HeroTitleProps {
   className?: string;
 }
 
 export default function HeroTitle({ className = '' }: HeroTitleProps) {
   return (
-    <div className="flex flex-1 flex-col justify-center text-[clamp(120px,13vw,12rem)] leading-[0.7]">
+    <div
+      className={cn(
+        // Layout
+        'lg: flex flex-col justify-center',
+        // Style
+        'text-[clamp(7rem,32vw,12rem)] leading-[0.7] min-lg:text-[clamp(10rem,13dvw,12rem)]',
+        className
+      )}
+    >
       {/* Main Heading - ATHLETIC ZONE AJACCIO */}
-      <h1 className="sr-only">ATHLETIC ZONE AJACCIO</h1>
+      <h1 className="sr-only">
+        ATHLETIC ZONE AJACCIO - Centre de fitness et coaching sportif en Corse
+      </h1>
 
       {/* ATHLETIC Text */}
       <span className="block text-white" aria-hidden="true">
@@ -15,12 +30,28 @@ export default function HeroTitle({ className = '' }: HeroTitleProps) {
 
       {/* ZONE Text with Coordinates */}
       <div className="relative" aria-hidden="true">
-        <span className="block text-[clamp(130px,14vw,13rem)] text-highlight">
+        <span
+          className={cn(
+            // Layout
+            'block',
+            // Style
+            'text-[clamp(8rem,32vw,13rem)] text-highlight min-lg:text-[clamp(11rem,14vw,13rem)]'
+          )}
+        >
           ZONE
         </span>
 
         {/* Coordinates - positioned absolutely over ZONE */}
-        <span className="absolute bottom-[45%] font-mono text-[clamp(12px,1.3vw,1.25rem)] font-black tracking-tight text-white drop-shadow-lg drop-shadow-black">
+        <span
+          className={cn(
+            // Position
+            'absolute bottom-[45%]',
+            // Font
+            'font-mono text-[clamp(11px,3vw,1.25rem)] font-black tracking-tight min-lg:text-[clamp(1rem,1.3vw,1.25rem)]',
+            // Shadow
+            'drop-shadow-lg drop-shadow-black'
+          )}
+        >
           41°55'51.078''N8°44'11.114''E
         </span>
       </div>
