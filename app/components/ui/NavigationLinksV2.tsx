@@ -1,4 +1,8 @@
 import { navigationLinks, NavigationLink } from '@/app/lib/navigation';
+import { clsx, ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 interface NavLinksProps {
   className?: string;
@@ -28,12 +32,15 @@ export default function NavLinks({
           <a
             key={link.name}
             href={link.href}
-            className={`${
+            className={cn(
+              'text-tertiary',
+              linkClassName,
               link.isSpecial
                 ? 'flex gap-1 text-highlight hover:text-highlight'
                 : 'hover:text-secondary'
-            } ${linkClassName}`}
+            )}
             aria-label={`Navigate to ${link.name} section`}
+            data-special={link.isSpecial ? 'true' : 'false'}
           >
             {link.name}
 

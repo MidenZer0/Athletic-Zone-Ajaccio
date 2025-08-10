@@ -15,7 +15,7 @@ export default function HeroBorder({
   const positionClasses = {
     'top-left': 'top-5 left-5 border-l-2 border-t-2',
     'top-right': 'top-5 right-5 border-r-2 border-t-2',
-    bottom: 'w-48 relative bottom-1 border-b-2',
+    bottom: 'md:w-48 w-[25dvw] relative bottom-1 border-b-2',
   };
 
   return (
