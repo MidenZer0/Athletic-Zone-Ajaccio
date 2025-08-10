@@ -40,6 +40,41 @@ const heroStyles = {
   ),
 } as const;
 
+// Local component - only used within Hero
+const Tagline = ({
+  className,
+  showLogo = false,
+}: {
+  className?: string;
+  showLogo?: boolean;
+}) => (
+  <div className={className}>
+    {showLogo && (
+      <div className="flex items-center justify-end gap-2">
+        <img
+          src="/image/Logo.svg"
+          alt="Athletic Zone Ajaccio logo"
+          className="h-6 w-auto"
+          loading="eager"
+          decoding="async"
+        />
+        <p>
+          Entrez dans la <span className="text-highlight">Zone</span>
+        </p>
+      </div>
+    )}
+    {!showLogo && (
+      <p>
+        Entrez dans la <span className="text-highlight">Zone</span>
+      </p>
+    )}
+    <p className={showLogo ? 'text-right' : 'text-left'}>
+      Réveillez l'<span className="text-highlight">A</span>thlète qui est en
+      vous
+    </p>
+  </div>
+);
+
 export default function HeroPage() {
   return (
     <section id="accueil" className={heroStyles.section}>
@@ -54,38 +89,13 @@ export default function HeroPage() {
         {/* Left column */}
         <div className={heroStyles.leftColumn}>
           <HeroTitle />
-          <div className={heroStyles.taglineMobile}>
-            <p>
-              Entrez dans la <span className="text-highlight">Zone</span>
-            </p>
-            <p className="text-left lg:text-right">
-              Réveillez l'<span className="text-highlight">A</span>thlète qui
-              est en vous
-            </p>
-          </div>
+          <Tagline className={heroStyles.taglineMobile} />
         </div>
 
         {/* Right column */}
         <div className={heroStyles.rightColumn}>
           <HeroNavigationV2 className="relative top-[6%]" />
-          <div className={heroStyles.taglineDesktop}>
-            <div className="flex items-center justify-end gap-2">
-              <img
-                src="/image/Logo.svg"
-                alt="Athletic Zone Ajaccio logo"
-                className="h-6 w-auto"
-                loading="eager"
-                decoding="async"
-              />
-              <p>
-                Entrez dans la <span className="text-highlight">Zone</span>
-              </p>
-            </div>
-            <p className="text-right">
-              Réveillez l'<span className="text-highlight">A</span>thlète qui
-              est en vous
-            </p>
-          </div>
+          <Tagline className={heroStyles.taglineDesktop} showLogo />
         </div>
 
         <Button className="h-[38px] w-[190px] lg:hidden">Réserver</Button>
