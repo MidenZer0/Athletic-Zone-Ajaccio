@@ -1,25 +1,20 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { clsx, ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-import {
-  sections,
-  SectionId,
-  navigationLinks,
-  NavigationLink,
-} from '@/app/lib/navigation';
+import Image from 'next/image';
+import Link from 'next/link';
+import { cn } from '@/app/lib/utils';
+import { sections, SectionId, NavigationLink } from '@/app/lib/navigation';
 import NavigationLinksV2 from './NavigationLinksV2';
-
-// Utility function for combining classes
-const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
 
 interface MobileMenuProps {
   className?: string;
 }
 
 // Floating Action Button (FAB) approach
-export default function MobileMenu({ className = '' }: MobileMenuProps) {
+export default function MobileMenu({
+  className: _className = '',
+}: MobileMenuProps) {
   const [activeSection, setActiveSection] = useState('accueil');
   const [showMobileMenu, setShowMobileMenu] = useState(false);
 
@@ -27,7 +22,7 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
     setShowMobileMenu(!showMobileMenu);
   };
 
-  const renderMobileLink = (link: NavigationLink, index: number) => {
+  const renderMobileLink = (link: NavigationLink, _index: number) => {
     const isActive = activeSection === link.href.replace('#', '');
 
     return (
@@ -48,8 +43,9 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
           }
         )}
       >
-        <a
+        <Link
           href={link.href}
+          onClick={() => handleLinkClick(link)}
           className={cn(
             // Layout
             'flex h-full w-full items-center justify-center',
@@ -67,15 +63,26 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
         >
           {link.name}
           {link.icon && (
-            <img
+            <Image
               src={link.icon}
               alt="arrow"
+              width={12}
+              height={12}
               className="relative bottom-0.5 h-3 w-3"
             />
           )}
-        </a>
+        </Link>
       </div>
     );
+  };
+
+  // Handle link clicks to manually close menu and update active section
+  const handleLinkClick = (link: NavigationLink) => {
+    const sectionId = link.href.replace('#', '');
+    if (sections.includes(sectionId as SectionId)) {
+      setActiveSection(sectionId as SectionId);
+    }
+    setShowMobileMenu(false);
   };
 
   // Intersection Observer for active section detection
@@ -83,14 +90,17 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+          // More lenient detection for better section recognition
+          if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
             setActiveSection(entry.target.id as SectionId);
           }
         });
       },
       {
-        threshold: 0.3,
-        rootMargin: '-20% 0px -20% 0px',
+        // Lower threshold for better detection
+        threshold: [0.1, 0.3, 0.5],
+        // Less restrictive margins
+        rootMargin: '-10% 0px -10% 0px',
       }
     );
 
@@ -128,7 +138,13 @@ export default function MobileMenu({ className = '' }: MobileMenuProps) {
           'min-lg:hidden'
         )}
       >
-        <img src="/image/logo_black.svg" alt="Menu" className="h-8 w-8" />
+        <Image
+          src="/image/logo_black.svg"
+          alt="Menu"
+          width={32}
+          height={32}
+          className="h-8 w-8"
+        />
       </button>
 
       {/* Slide-up menu from bottom */}

@@ -6,13 +6,15 @@
   /* Colors */
 
   --background: #f5f5f5;
-
-  /* Text Colors */
-
-  --color-primary: #000000;
-  --color-secondary: #ffffff;
   --color-highlight: #ff4040;
-  --color-button: #c80d0d;
+
+  /* Button Colors */
+  --color-button-red: #c80d0d;
+  --color-button-highlight: #ff4040;
+  --color-button-white: #ffffff;
+  --color-button-yellow: #ffd000;
+  --color-button-black: #000000;
+  --color-button-transparent: rgba(255, 255, 255, 0);
 
   /* only used for the navigation hover effect */
   --color-tertiary: #dcdcda;
@@ -25,30 +27,34 @@
 
 body {
   background: var(--background);
-  color: var(--color-primary);
   font-family: var(--font-roboto-sans);
   overflow-x: hidden;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-background: #f5f5f5;
   --color-background-burger: var(--background-burger);
 
   /* font styles */
   --font-sans: var(--font-roboto-sans);
   --font-mono: var(--font-roboto-mono);
   --font-sofia: var(--font-sofia-sans-extra-condensed);
+  --font-anton: var(--font-anton);
 
   /* font sizes */
   --size-forty: var(--size-forty);
 
   /* Text colors */
-  --color-primary: var(--color-primary);
-  --color-secondary: var(--color-secondary);
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
   --color-highlight: var(--color-highlight);
-  /* --color-tertiary: var(--color-tertiary); */
-  --color-button: var(--color-button);
+
+  /* Button Colors */
+  --color-button-red: var(--color-button-red);
+  --color-button-white: var(--color-button-white);
+  --color-button-yellow: var(--color-button-yellow);
+  --color-button-black: var(--color-button-black);
+  --color-button-transparent: var(--color-button-transparent);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -61,6 +67,19 @@ body {
 } */
 
 /* Navigation link classes */
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin linear both;
+  animation-timeline: view();
+  transform-origin: center;
+  transform-box: fill-box;
+}
 
 .nav-img-preview {
   @apply absolute top-1/2 right-[-110px] h-auto w-[100px] -translate-y-1/2 transform opacity-0 transition-opacity duration-300 ease-in group-hover:opacity-100;

@@ -9,7 +9,7 @@ export default function HeroNavigationV2({
 }: HeroNavigationV2Props) {
   return (
     <nav
-      className={`hidden flex-1 items-center justify-end font-sofia text-5xl text-tertiary lg:flex ${className}`}
+      className={`text-tertiary hidden flex-1 items-center justify-end font-sofia text-[40px] leading-12 lg:flex ${className}`}
     >
       <NavigationLinksV2
         showImages={true}

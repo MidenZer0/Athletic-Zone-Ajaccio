@@ -1,8 +1,6 @@
 import { navigationLinks, NavigationLink } from '@/app/lib/navigation';
-import { clsx, ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+import Image from 'next/image';
+import { cn } from '@/app/lib/utils';
 
 interface NavLinksProps {
   className?: string;
@@ -45,16 +43,24 @@ export default function NavLinks({
             {link.name}
 
             {showImages && link.image && (
-              <img
+              <Image
                 src={link.image}
-                alt={link.alt}
+                alt={link.alt || `${link.name} preview`}
+                width={64}
+                height={64}
                 loading="lazy"
                 className="nav-img-preview"
               />
             )}
 
             {link.icon && (
-              <img src={link.icon} alt="arrow" className={iconClassName} />
+              <Image
+                src={link.icon}
+                alt="arrow"
+                width={12}
+                height={12}
+                className={iconClassName}
+              />
             )}
           </a>
         );

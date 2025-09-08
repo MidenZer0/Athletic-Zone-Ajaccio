@@ -1,7 +1,4 @@
-import { clsx, ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+import { cn } from '@/app/lib/utils';
 
 interface HeroTitleProps {
   className?: string;
@@ -20,7 +17,7 @@ export default function HeroTitle({ className = '' }: HeroTitleProps) {
     >
       {/* Main Heading - ATHLETIC ZONE AJACCIO */}
       <h1 className="sr-only">
-        ATHLETIC ZONE AJACCIO - Centre de fitness et coaching sportif en Corse
+        ATHLETIC ZONE AJACCIO - Salle de sport de fitness et coaching en Corse
       </h1>
 
       {/* ATHLETIC Text */}
@@ -47,12 +44,12 @@ export default function HeroTitle({ className = '' }: HeroTitleProps) {
             // Position
             'absolute bottom-[45%]',
             // Font
-            'font-mono text-[clamp(11px,3vw,1.25rem)] font-black tracking-tight min-lg:text-[clamp(1rem,1.3vw,1.25rem)]',
+            'font-mono text-[clamp(11px,3vw,1.25rem)] font-medium tracking-tight min-lg:text-[clamp(1rem,1.3vw,1.25rem)]',
             // Shadow
             'drop-shadow-lg drop-shadow-black'
           )}
         >
-          41°55'51.078''N8°44'11.114''E
+          41°55&apos;51.078&apos;&apos;N8°44&apos;11.114&apos;&apos;E
         </span>
       </div>
 

@@ -11,6 +11,7 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.0.0",
     "next": "15.4.1",
     "react": "19.1.0",
@@ -25,9 +26,19 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
+    "eslint-plugin-better-tailwindcss": "^3.7.4",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "tailwindCSS.classFunctions": [
+    "cva",
+    "cx",
+    "cn",
+    "clsx"
+  ],
+  "editor.quickSuggestions": {
+    "strings": true
   }
 }

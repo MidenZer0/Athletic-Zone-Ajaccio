@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function LoginPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-background">
@@ -11,16 +13,16 @@ export default function LoginPage() {
 
         <div className="rounded-lg bg-secondary p-6 shadow-lg">
           <p className="mb-6 text-center text-primary">
-            🚧 Système d'authentification en cours de développement
+            🚧 Système d&apos;authentification en cours de développement
           </p>
 
           <div className="text-center">
-            <a
+            <Link
               href="/"
               className="inline-block rounded-lg bg-highlight px-6 py-3 text-secondary transition-transform duration-300 hover:scale-105"
             >
-              Retour à l'accueil
-            </a>
+              Retour à l&apos;accueil
+            </Link>
           </div>
         </div>
       </div>

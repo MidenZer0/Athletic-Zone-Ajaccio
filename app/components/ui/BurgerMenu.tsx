@@ -1,24 +1,17 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { clsx, ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import Image from 'next/image';
+import { cn } from '@/app/lib/utils';
 import NavigationLinksV2 from './NavigationLinksV2';
-import {
-  sections,
-  SectionId,
-  navigationLinks,
-  NavigationLink,
-} from '@/app/lib/navigation';
-
-// Utility function for combining classes
-const cn = (...inputs: ClassValue[]) => twMerge(clsx(inputs));
+import { sections, SectionId, NavigationLink } from '@/app/lib/navigation';
+import Link from 'next/link';
 
 interface BurgerMenuV2Props {
-  className?: ClassValue;
+  _className?: string;
 }
 
-export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
+export default function BurgerMenuV2({ _className = '' }: BurgerMenuV2Props) {
   const [activeSection, setActiveSection] = useState('accueil');
   const [showBurgerMenu, setShowBurgerMenu] = useState(false);
 
@@ -30,14 +23,14 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.1) {
             setActiveSection(entry.target.id as SectionId);
           }
         });
       },
       {
-        threshold: 0.3,
-        rootMargin: '-20% 0px -20% 0px',
+        threshold: 0.1,
+        rootMargin: '-10% 0px -10% 0px',
       }
     );
 
@@ -58,17 +51,17 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
   const getContainerClasses = () => {
     return cn(
       // Layout
-      'w-dvw h-[15dvh] fixed top-0 z-50',
+      'fixed top-0 z-50 h-[130px] w-dvw',
       'flex flex-col items-center max-lg:hidden',
 
       // Style
-      'drop-shadow-md drop-shadow-gray-600',
+      'drop-shadow-sm drop-shadow-gray-400',
 
       // Transition
       'transition-transform duration-500 ease-in-out',
 
       // Transform state
-      showBurgerMenu ? 'translate-y-0' : '-translate-y-[11dvh]',
+      showBurgerMenu ? 'translate-y-0' : '-translate-y-[92px]',
 
       // Visibility
       activeSection === 'accueil' && 'lg:hidden'
@@ -76,7 +69,7 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
   };
 
   // Custom render function for burger menu links with active state borders
-  const renderBurgerLink = (link: NavigationLink, index: number) => {
+  const renderBurgerLink = (link: NavigationLink, _index: number) => {
     const isActive = activeSection === link.href.replace('#', '');
 
     return (
@@ -96,7 +89,7 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
           }
         )}
       >
-        <a
+        <Link
           href={link.href}
           className={cn(
             // Layout
@@ -114,7 +107,7 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
           aria-label={`Navigate to ${link.name} section`}
         >
           {link.name}
-        </a>
+        </Link>
       </div>
     );
   };
@@ -129,13 +122,18 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
           'bg-background-burger'
         )}
       >
-        <a href="#accueil" className={cn('flex items-center justify-center')}>
-          <img
+        <Link
+          href="#accueil"
+          className={cn('flex items-center justify-center')}
+        >
+          <Image
             src="/image/logo_black.svg"
             alt="Logo"
+            width={32}
+            height={32}
             className={cn('h-8 w-auto')}
           />
-        </a>
+        </Link>
         <NavigationLinksV2
           className={cn(
             // Layout
@@ -152,9 +150,11 @@ export default function BurgerMenuV2({ className = '' }: BurgerMenuV2Props) {
         aria-expanded={showBurgerMenu}
         aria-controls="burger-navigation"
       >
-        <img
+        <Image
           src="/image/burger_button.svg"
           alt="burger button"
+          width={50}
+          height={40}
           className={cn('h-10 w-50 cursor-pointer')}
         />
       </button>
