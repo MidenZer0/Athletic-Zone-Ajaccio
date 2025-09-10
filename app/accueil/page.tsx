@@ -17,7 +17,7 @@ const heroStyles = {
     'font-sofia text-secondary'
   ),
   overlay: cn(
-    'pointer-events-none absolute inset-0 bg-black/15'
+    'pointer-events-none absolute inset-0 bg-overlay-hero'
   ),
   mainContainer: cn(
     'relative z-10 h-full w-full',
@@ -86,14 +86,6 @@ const TaglineV2 = ({
   <div className={className}>
     {showLogo && (
       <div className="flex flex-col items-end gap-2">
-        {/* <Link href="/auth/login" className="block w-fit">
-          <ButtonV2
-            children="Entrer dans la_ZONE"
-            color="yellow"
-            icon="arrow"
-            className="bg-[rgba(85,83,83,0.2)] text-base"
-          />
-        </Link> */}
         <div className="flex items-center gap-2">
           <Image
             src="/image/Logo.svg"
@@ -135,12 +127,12 @@ export default function HeroPage() {
       <CornerBorder
         variant="hero"
         position="top-left"
-        className="hidden min-md:block"
+        className="min-md:block hidden"
       />
       <CornerBorder
         variant="hero"
         position="top-right"
-        className="hidden min-md:block"
+        className="min-md:block hidden"
       />
 
       {/* Main container displaying in grid on large screen*/}
@@ -149,20 +141,11 @@ export default function HeroPage() {
         <div className={heroStyles.leftColumn}>
           <HeroTitle />
           <TaglineV2 className={heroStyles.taglineMobile} />
-
-          {/* <Button
-              className="h-[38px] w-[190px] cursor-pointer font-medium lg:hidden"
-              color="red"
-              arrowSize={14}
-              arrowStroke={1}
-            >
-              Réserver
-            </Button> */}
           <ButtonV2
             href="/auth/login"
             children="Entrer dans la_ZONE"
             color="yellow"
-            className="bg-[rgba(85,83,83,0.3)] lg:hidden"
+            className="bg-[rgba(85,83,83,0.2)] lg:hidden"
           />
         </div>
 

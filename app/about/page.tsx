@@ -9,18 +9,17 @@ export default function AboutPage() {
   return (
     <section
       id="about"
-      className="mt-16 space-y-12 text-primary md:space-y-16 lg:space-y-20"
+      className="mt-16 space-y-12 md:space-y-16 lg:space-y-20"
     >
-      <section className="flex h-fit w-full flex-col space-y-12 md:space-y-16 lg:space-y-16">
-        <div className="flex w-full flex-col items-center justify-center gap-4 px-5 md:gap-6 lg:gap-8">
-          <h2 className="text-center font-anton text-[clamp(4.5rem,10vw,12rem)] leading-[1] tracking-[-0.040em]">
+      <section className="flex h-fit w-full flex-col space-y-8 md:space-y-12 lg:space-y-16">
+        <div className="px-px-sm sm:px-px-md lg:px-px-lg flex w-full flex-col items-center justify-center gap-4 md:gap-6 lg:gap-8">
+          <h2 className="text-center font-anton text-[clamp(4rem,10vw,14rem)] leading-[1] tracking-[-0.040em]">
             UN COACHING SUR <span className="text-highlight">MESURE</span>
           </h2>
 
-          <p className="w-2/5 min-w-[330px] text-center font-mono text-[clamp(0.9rem,2vw,1.125rem)] tracking-tighter italic max-sm:min-w-fit">
-            « Être athlétique, c&apos;est aller plus loin.{' '}
-            <br className="hidden max-[930px]:block" /> Tu améliores tes
-            performances mais surtout ta santé ! »
+          <p className="w-3/5 min-w-[330px] text-center font-mono text-[clamp(0.9rem,2vw,1.125rem)] tracking-tighter italic max-sm:min-w-fit">
+            « Être athlétique, c&apos;est aller plus loin. <br className="" />{' '}
+            Tu améliores tes performances mais surtout ta santé ! »
           </p>
         </div>
 

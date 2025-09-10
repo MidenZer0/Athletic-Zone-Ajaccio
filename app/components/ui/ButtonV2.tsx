@@ -7,35 +7,26 @@ const COLORS = {
   red: {
     text: 'text-highlight',
     border: 'border-highlight',
-    gradient: 'var(--color-highlight)',
+    gradient: 'bg-stripes-red',
   },
   yellow: {
     text: 'text-button-yellow',
     border: 'border-button-yellow',
-    gradient: 'var(--color-button-yellow)',
+    gradient: 'bg-stripes-yellow',
   },
   black: {
     text: 'text-button-black',
     border: 'border-button-black',
-    gradient: 'var(--color-button-black)',
+    gradient: 'bg-stripes-black',
   },
 } as const;
 
-const createGradientClass = (gradientVar: string) =>
-  `bg-[repeating-linear-gradient(135deg,${gradientVar},${gradientVar}_3px,var(--color-button-transparent)_3px,var(--color-button-transparent)_4.5px)]`;
-
-const gradientBackground = cva('h-[34px] min-w-[34px]', {
-  variants: {
-    color: {
-      red: createGradientClass(COLORS.red.gradient),
-      yellow: createGradientClass(COLORS.yellow.gradient),
-      black: createGradientClass(COLORS.black.gradient),
-    } satisfies Record<keyof typeof COLORS, string>,
-  },
-  defaultVariants: {
-    color: 'yellow',
-  },
-});
+const CORNER_POSITIONS = [
+  'top-left',
+  'bottom-left',
+  'top-right',
+  'bottom-right',
+] as const;
 
 const Icon = ({ type }: { type: 'plus' | 'arrow' }) => {
   const iconPaths = {
@@ -84,17 +75,15 @@ export default function Button({
     <Link
       href={href}
       className={cn(
-        'z-50 flex h-[42px] w-fit gap-0.5 p-1',
+        'z-50 flex h-[42px] w-fit items-center gap-0.5 rounded-sm p-1',
         colorConfig.text,
         className
       )}
     >
-      <span className={gradientBackground({ color })} />
+      <span className={cn(colorConfig.gradient, 'h-[34px] min-w-[34px]')} />
       <span className={cn('h-[34px] border-l-2', colorConfig.border)} />
       <div className="relative flex h-full items-center justify-center gap-4 px-4 font-mono font-medium">
-        {(
-          ['top-left', 'bottom-left', 'top-right', 'bottom-right'] as const
-        ).map((position) => (
+        {CORNER_POSITIONS.map((position) => (
           <CornerBorder
             key={position}
             variant="button"

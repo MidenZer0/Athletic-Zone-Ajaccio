@@ -17,8 +17,8 @@
   --color-button-transparent: rgba(255, 255, 255, 0);
 
   /* only used for the navigation hover effect */
-  --color-tertiary: #dcdcda;
-  --background-burger: #ede9e9;
+
+  --background-burger: rgb(237, 233, 233);
 
   /* Font Sizes */
 
@@ -32,29 +32,122 @@ body {
 }
 
 @theme inline {
-  --color-background: #f5f5f5;
-  --color-background-burger: var(--background-burger);
+  /*-- TYPOGRAPHY --*/
 
-  /* font styles */
+  /* Hero Title */
+  --text-h1-base: clamp(7rem, 32vw, 12rem);
+  --text-h1-lg: clamp(10rem, 13dvw, 12rem);
+  --text-h1-zone-base: clamp(8rem, 32vw, 13rem);
+  --text-h1-zone-lg: clamp(11rem, 14vw, 13rem);
+
+  /* Coordinates */
+  --text-coordinates-base: clamp(0.73rem, 3svw, 1.19rem);
+  --text-coordinates-lg: clamp(1rem, 1.28svw, 1.19rem);
+
+  /* Tagline */
+  --text-tagline: clamp(30px, 8vw, 40px);
+
+  /* H2 */
+  --text-h2: clamp(4.5rem, 10vw, 12rem);
+
+  /* Quote */
+  --text-body-lg: clamp(0.9rem, 2vw, 1.125rem);
+
+  --size-forty: var(--size-forty);
+
+  /*-- SPACING --*/
+
+  /* Gap */
+  --gap-sm: 16px;
+  --gap-md: 24px;
+  --gap-lg: 32px;
+
+  /* Responsive Gap */
+  --gap-hero-main: 10svh;
+  --gap-hero-section: 5svh;
+
+  /* Section Spacing Y*/
+  --space-section-sysm: 48px;
+  --space-section-symd: 64px;
+  --space-section-sylg: 80px;
+
+  /*Padding X*/
+  --spacing-xsm: 20px;
+  --spacing-xmd: 40px;
+  --spacing-xlg: 60px;
+
+  /*-- SIZES --*/
+
+  /*Width*/
+  --size-sm: 20px;
+  --size-md: 40px;
+  --size-lg: 60px;
+
+  /*Height*/
+  /*Gallery*/
+  --height-gallery-base: 70vh;
+  --height-gallery-lg: 80vh;
+  --height-gallery-min: 474px;
+  --height-gallery-min-lg: 594px;
+
+  /*-- FONT STYLES --*/
   --font-sans: var(--font-roboto-sans);
   --font-mono: var(--font-roboto-mono);
   --font-sofia: var(--font-sofia-sans-extra-condensed);
   --font-anton: var(--font-anton);
 
-  /* font sizes */
-  --size-forty: var(--size-forty);
+  /*-- COLORS --*/
 
-  /* Text colors */
+  /*Overlay */
+  --color-overlay-hero: rgba(0, 0, 0, 0.15);
+  --color-overlay-hero-button: rgba(85, 83, 83, 0.2);
+  --color-overlay-button: rgba(119, 116, 116, 0.03);
+
+  /*Background */
+  --color-background: #f5f5f5;
+  --color-background-burger: rgb(237, 233, 233);
+
+  /*Text colors*/
   --color-primary: #000000;
   --color-secondary: #ffffff;
   --color-highlight: var(--color-highlight);
 
-  /* Button Colors */
+  /*Button Colors*/
   --color-button-red: var(--color-button-red);
   --color-button-white: var(--color-button-white);
   --color-button-yellow: var(--color-button-yellow);
   --color-button-black: var(--color-button-black);
   --color-button-transparent: var(--color-button-transparent);
+}
+
+@layer utilities {
+  .bg-stripes-yellow {
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--color-button-yellow),
+      var(--color-button-yellow) 3px,
+      var(--color-button-transparent) 3px,
+      var(--color-button-transparent) 6px
+    );
+  }
+  .bg-stripes-red {
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--color-button-highlight),
+      var(--color-button-highlight) 3px,
+      var(--color-button-transparent) 3px,
+      var(--color-button-transparent) 6px
+    );
+  }
+  .bg-stripes-black {
+    background-image: repeating-linear-gradient(
+      135deg,
+      var(--color-button-black),
+      var(--color-button-black) 3px,
+      var(--color-button-transparent) 3px,
+      var(--color-button-transparent) 6px
+    );
+  }
 }
 
 /* @media (prefers-color-scheme: dark) {
