@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local claude instructions
+CLAUDE.local.md
+TODO.md
+
+# IDE configs
+.windsurf/
+
+# workflow templates
+claude-code-workflows-main/
