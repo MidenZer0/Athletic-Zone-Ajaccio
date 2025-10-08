@@ -12,7 +12,7 @@ import './globals.css';
 
 const robotoSans = Roboto({
   variable: '--font-roboto-sans',
-  weight: ['200', '300', '400', '500'],
+  weight: ['200', '300', '400', '500', '600'],
   subsets: ['latin'],
   display: 'swap',
 });

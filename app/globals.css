@@ -48,16 +48,17 @@ body {
   --text-tagline: clamp(30px, 8vw, 40px);
 
   /* H2 */
-  --text-h2: clamp(4.5rem, 10vw, 12rem);
+  --text-h2: clamp(4rem, 9.5vw, 9rem);
 
   /* Quote */
-  --text-body-lg: clamp(0.9rem, 2vw, 1.125rem);
+  --text-quote: clamp(0.9rem, 2vw, 1.125rem);
 
   --size-forty: var(--size-forty);
 
   /*-- SPACING --*/
 
   /* Gap */
+  --gap-xs: 12px;
   --gap-sm: 16px;
   --gap-md: 24px;
   --gap-lg: 32px;
@@ -65,6 +66,9 @@ body {
   /* Responsive Gap */
   --gap-hero-main: 10svh;
   --gap-hero-section: 5svh;
+
+  /* Margin */
+  --spacing-mt-sm: 64px;
 
   /* Section Spacing Y*/
   --space-section-sysm: 48px;
@@ -79,9 +83,6 @@ body {
   /*-- SIZES --*/
 
   /*Width*/
-  --size-sm: 20px;
-  --size-md: 40px;
-  --size-lg: 60px;
 
   /*Height*/
   /*Gallery*/
@@ -118,6 +119,13 @@ body {
   --color-button-yellow: var(--color-button-yellow);
   --color-button-black: var(--color-button-black);
   --color-button-transparent: var(--color-button-transparent);
+
+  /*Breakpoints*/
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1180px;
 }
 
 @layer utilities {
@@ -159,21 +167,37 @@ body {
   }
 } */
 
-/* Navigation link classes */
+.column {
+  @apply flex flex-col;
+}
 
-@keyframes spin {
+.gutter {
+  @apply px-xsm md:px-xmd lg:px-xlg;
+}
+
+@keyframes turn {
   to {
     transform: rotate(360deg);
   }
 }
 
-.spin {
-  animation: spin linear both;
+.turn {
+  animation: turn linear both;
   animation-timeline: view();
   transform-origin: center;
   transform-box: fill-box;
 }
 
 .nav-img-preview {
-  @apply absolute top-1/2 right-[-110px] h-auto w-[100px] -translate-y-1/2 transform opacity-0 transition-opacity duration-300 ease-in group-hover:opacity-100;
+  position: absolute;
+  top: 50%;
+  width: 100px;
+  height: auto;
+  transform: translateY(-50%) translateX(130%);
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+.group:hover .nav-img-preview {
+  opacity: 1;
 }

@@ -1,7 +1,10 @@
+'use client';
 import { cn } from '@/app/lib/utils';
-import CornerBorder from './CornerBorder';
-import { cva } from 'class-variance-authority';
+import CornerBorder from './decoration/CornerBorder';
+import { cva, type VariantProps } from 'class-variance-authority';
 import Link from 'next/link';
+import Icon from './icon/ArrowPlus';
+import { useState, useEffect, useRef } from 'react';
 
 const COLORS = {
   red: {
@@ -28,31 +31,20 @@ const CORNER_POSITIONS = [
   'bottom-right',
 ] as const;
 
-const Icon = ({ type }: { type: 'plus' | 'arrow' }) => {
-  const iconPaths = {
-    plus: 'M7 1V13M1 7H13',
-    arrow: 'M1 7H13M13 7L7 1M13 7L7 13',
-  } as const;
-
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="14"
-      height="14"
-      viewBox="0 0 14 14"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d={iconPaths[type]}
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-};
+const buttonVariants = cva(
+  'z-10 flex items-center gap-0.5 rounded-sm p-1 w-fit', // base classes
+  {
+    variants: {
+      size: {
+        default: 'h-[42px]',
+        compact: 'h-[36px]',
+      },
+    },
+    defaultVariants: {
+      size: 'default',
+    },
+  }
+);
 
 interface ButtonProps {
   className?: string;
@@ -60,6 +52,7 @@ interface ButtonProps {
   color?: keyof typeof COLORS;
   icon?: 'plus' | 'arrow' | 'none';
   href?: string;
+  size?: VariantProps<typeof buttonVariants>['size'];
 }
 
 export default function Button({
@@ -68,31 +61,75 @@ export default function Button({
   color = 'yellow',
   icon = 'none',
   href = '',
+  size,
 }: ButtonProps) {
   const colorConfig = COLORS[color];
+  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect(); // Stop observing once visible
+        }
+      },
+      { threshold: 0.1 } // Trigger when 10% of the button is visible
+    );
+
+    if (buttonRef.current) {
+      observer.observe(buttonRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <Link
+      ref={buttonRef}
       href={href}
       className={cn(
-        'z-50 flex h-[42px] w-fit items-center gap-0.5 rounded-sm p-1',
+        buttonVariants({ size }),
         colorConfig.text,
-        className
+        className,
+        'group'
       )}
     >
-      <span className={cn(colorConfig.gradient, 'h-[34px] min-w-[34px]')} />
-      <span className={cn('h-[34px] border-l-2', colorConfig.border)} />
-      <div className="relative flex h-full items-center justify-center gap-4 px-4 font-mono font-medium">
+      <span className={cn(colorConfig.gradient, 'aspect-square h-full')} />
+      <span className={cn('h-full border-l-2', colorConfig.border)} />
+      <div className="relative flex h-full shrink-0 items-center justify-center gap-4 px-4 font-mono font-medium">
         {CORNER_POSITIONS.map((position) => (
           <CornerBorder
             key={position}
             variant="button"
             position={position}
-            className={colorConfig.border}
+            className={cn(
+              colorConfig.border,
+              'transform opacity-0 duration-300 group-hover:opacity-100'
+            )}
           />
         ))}
-        {children}
-        {icon !== 'none' && <Icon type={icon} />}
+        <span
+          className={cn(
+            'transform transition duration-600 ease-out',
+            isVisible ? 'translate-x-0 opacity-100' : '-translate-x-8 opacity-0'
+          )}
+        >
+          {children}
+        </span>
+        {icon !== 'none' && (
+          <div
+            className={cn(
+              'transform transition-all delay-150 duration-600 ease-out',
+              isVisible
+                ? 'translate-x-0 opacity-100'
+                : '-translate-x-4 opacity-0'
+            )}
+          >
+            <Icon type={icon} />
+          </div>
+        )}
       </div>
     </Link>
   );

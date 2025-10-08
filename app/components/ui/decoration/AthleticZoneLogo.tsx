@@ -6,7 +6,7 @@ interface AthleticZoneLogoProps {
   strokeWidthLetter?: number;
   strokeWidthLogo?: number;
   fillColor?: string;
-  spin?: boolean;
+  turn?: boolean;
   fontSize?: number;
 }
 
@@ -18,7 +18,7 @@ export default function AthleticZoneLogo({
   strokeWidthLetter = 2,
   strokeWidthLogo = 0.5,
   fillColor = 'none',
-  spin = false,
+  turn = false,
   fontSize = 66,
 }: AthleticZoneLogoProps) {
   return (
@@ -30,7 +30,8 @@ export default function AthleticZoneLogo({
           height={304}
           viewBox="0 0 800 800"
           fill="none"
-          className={`h-[200px] w-auto md:h-[250px] lg:h-[300px] ${spin ? 'spin' : ''}`}
+          className={`h-[200px] w-auto md:h-[250px] lg:h-[300px] ${turn ? 'turn' : ''}`}
+          arian-hidden="true"
         >
           <rect width="100%" height="100%" fill="none" />
           <path
@@ -65,6 +66,7 @@ export default function AthleticZoneLogo({
           viewBox="0 0 156 108"
           fill="none"
           className="h-[46px] w-auto md:h-[63px] lg:h-[78px]"
+          aria-hidden="true"
         >
           <path
             d="M155.146 107.5H101.246L79.877 67.9648L88.8662 53.1201L108.148 87.7773L108.291 88.0342H127.318L126.892 87.2861L100.002 40.1855L98.4131 37.3408L107.385 22.5264L155.146 107.5ZM88.3066 52.1133L79.3252 66.9453L60.9629 32.9668L60.5303 32.166L60.0869 32.9609L18.5088 107.5H0.848633L59.8799 1.0293L88.3066 52.1133Z"

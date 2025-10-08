@@ -11,7 +11,7 @@ export default function HeroTitle({ className = '' }: HeroTitleProps) {
         // Layout
         'lg: flex flex-col justify-center',
         // Style
-        'text-[clamp(7rem,32svw,12rem)] leading-[0.7] min-lg:text-[clamp(10rem,13svw,12rem)]',
+        'text-h1-base leading-[0.7] min-lg:text-h1-lg',
         className
       )}
     >
@@ -21,7 +21,7 @@ export default function HeroTitle({ className = '' }: HeroTitleProps) {
       </h1>
 
       {/* ATHLETIC Text */}
-      <span className="block text-white" aria-hidden="true">
+      <span className="block text-secondary" aria-hidden="true">
         ATHLETIC
       </span>
 
@@ -32,7 +32,7 @@ export default function HeroTitle({ className = '' }: HeroTitleProps) {
             // Layout
             'block',
             // Style
-            'text-[clamp(8rem,32svw,13rem)] text-highlight min-lg:text-[clamp(11rem,14svw,13rem)]'
+            'text-h1-zone-base text-highlight min-lg:text-h1-zone-lg'
           )}
         >
           ZONE
@@ -44,7 +44,7 @@ export default function HeroTitle({ className = '' }: HeroTitleProps) {
             // Position
             'absolute bottom-[45%]',
             // Font
-            'font-mono text-[clamp(0.73rem,3svw,1.19rem)] font-medium tracking-tight lg:text-[clamp(1rem,1.28svw,1.19rem)]',
+            'font-mono text-coordinates-base font-medium tracking-tight lg:text-coordinates-lg',
             // Shadow
             'drop-shadow-lg drop-shadow-black'
           )}

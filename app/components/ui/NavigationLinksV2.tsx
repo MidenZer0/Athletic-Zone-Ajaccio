@@ -48,7 +48,7 @@ export default function NavLinks({
                 alt={link.alt || `${link.name} preview`}
                 width={64}
                 height={64}
-                loading="lazy"
+                loading="eager"
                 className="nav-img-preview"
               />
             )}

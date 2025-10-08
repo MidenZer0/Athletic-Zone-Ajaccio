@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import HeroBackground from '@/public/image/hero_background.webp';
-import CornerBorder from '@/app/components/ui/CornerBorder';
+import CornerBorder from '@/app/components/ui/decoration/CornerBorder';
 import HeroTitle from '@/app/components/ui/HeroTitle';
 import HeroNavigationV2 from '@/app/components/ui/HeroNavigationV2';
 import Button from '@/app/components/ui/Button';
@@ -127,12 +127,12 @@ export default function HeroPage() {
       <CornerBorder
         variant="hero"
         position="top-left"
-        className="min-md:block hidden"
+        className="hidden min-md:block"
       />
       <CornerBorder
         variant="hero"
         position="top-right"
-        className="min-md:block hidden"
+        className="hidden min-md:block"
       />
 
       {/* Main container displaying in grid on large screen*/}
